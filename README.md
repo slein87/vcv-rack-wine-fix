@@ -181,9 +181,9 @@ with `msvcrt` and `ucrtbase`, so the patch applies to them as well.
 | Where | Status |
 |---|---|
 | Wine (bug report with the measurements, no patch because of Wine's LLM policy) | not filed yet |
-| VCV Rack (support request, VCV does not accept code contributions) | not filed yet |
-| Cardinal #854 | not commented yet |
-| ableton-linux (its Wine build could carry the patch) | not filed yet |
+| VCV Rack (VCV does not accept code contributions) | reported to VCV support on 2026-09-17 |
+| Cardinal | [comment in #854](https://github.com/DISTRHO/Cardinal/issues/854#issuecomment-5720689742) |
+| ableton-linux (its Wine build could carry the fix) | [shibco/ableton-linux#317](https://github.com/shibco/ableton-linux/issues/317) |
 
 The right place for the fix is Rack (check the `fopen()` result, or skip entries that are not
 regular files) and Wine (validate the stream). The binary patch in this repository is a stopgap
