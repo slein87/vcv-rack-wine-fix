@@ -1,0 +1,55 @@
+Microsoft Windows [Version 10.0.26200.6584]
+msvcrt.dll fread [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fwrite [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fgets [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fgetws [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fputs [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fputws [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll fgetc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll getc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fgetwc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll _getw [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll ftell [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll _ftelli64 [handler] -> export missing | exit=0x0000005B
+msvcrt.dll feof [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll ferror [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll _fileno [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fclose [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll rewind [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x85de02d000 (int -570241024) errno=22 | exit=0x00000000
+msvcrt.dll clearerr [handler] (no _set_invalid_parameter_handler) -> returned, ret=0x16 (int 22) errno=22 | exit=0x00000000
+msvcrt.dll fputc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll putc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fputwc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll _putw [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll ungetc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll ungetwc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll fseek [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll _fseeki64 [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0xC0000005
+msvcrt.dll setvbuf [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fread [handler] -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+ucrtbase.dll fwrite [handler] -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+ucrtbase.dll fgets [handler] -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+ucrtbase.dll fgetws [handler] -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+ucrtbase.dll fputs [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fputws [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fgetc [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll getc [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fgetwc [handler] -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+ucrtbase.dll _getw [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll ftell [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll _ftelli64 [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll feof [handler] -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+ucrtbase.dll ferror [handler] -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+ucrtbase.dll _fileno [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fclose [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll rewind [handler] -> returned, ret=0x26e1cbeb5c0 (int 482260416) errno=22 | exit=0x00000000
+ucrtbase.dll clearerr [handler] -> returned, ret=0x16 (int 22) errno=22 | exit=0x00000000
+ucrtbase.dll fputc [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll putc [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fputwc [handler] -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+ucrtbase.dll _putw [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll ungetc [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll ungetwc [handler] -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+ucrtbase.dll fseek [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll _fseeki64 [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll setvbuf [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000

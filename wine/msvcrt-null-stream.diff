@@ -1,0 +1,299 @@
+# Generated with an AI coding assistant (Claude Code). NOT for submission to Wine and not to be
+# copied into Wine: the Wine project does not accept LLM-generated code
+# (https://gitlab.winehq.org/wine/wine/-/wikis/Developer-FAQ). This file documents what was
+# built and tested here. Base: wine-11.13, applies cleanly to master as of 2026-09-17.
+diff --git a/dlls/msvcrt/file.c b/dlls/msvcrt/file.c
+index e5850ec..acfdb46 100644
+--- a/dlls/msvcrt/file.c
++++ b/dlls/msvcrt/file.c
+@@ -1574,6 +1574,8 @@ int CDECL _fseeki64(FILE* file, __int64 offset, int whence)
+ {
+     int ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return -1;
++
+     _lock_file(file);
+     ret = _fseeki64_nolock(file, offset, whence);
+     _unlock_file(file);
+@@ -1673,6 +1675,8 @@ int CDECL _chsize(int fd, __msvcrt_long size)
+  */
+ void CDECL clearerr(FILE* file)
+ {
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return;
++
+   TRACE(":file (%p) fd (%d)\n",file,file->_file);
+ 
+   _lock_file(file);
+@@ -1713,6 +1717,8 @@ __ASM_GLOBAL_FUNC(rewind_preserve_stack,
+  */
+ void CDECL rewind(FILE* file)
+ {
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return;
++
+   TRACE(":file (%p) fd (%d)\n",file,file->_file);
+ 
+   _lock_file(file);
+@@ -1926,6 +1932,8 @@ __int64 CDECL _filelengthi64(int fd)
+  */
+ int CDECL _fileno(FILE* file)
+ {
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return -1;
++
+   TRACE(":FILE* (%p) fd (%d)\n",file,file->_file);
+   return file->_file;
+ }
+@@ -3744,6 +3752,8 @@ int CDECL _putw(int val, FILE* file)
+ {
+   int len;
+ 
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return EOF;
++
+   _lock_file(file);
+   len = _write(file->_file, &val, sizeof(val));
+   if (len == sizeof(val)) {
+@@ -3807,6 +3817,8 @@ int CDECL _fclose_nolock(FILE* file)
+  */
+ int CDECL feof(FILE* file)
+ {
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return 0;
++
+     return file->_flag & _IOEOF;
+ }
+ 
+@@ -3815,6 +3827,8 @@ int CDECL feof(FILE* file)
+  */
+ int CDECL ferror(FILE* file)
+ {
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return 0;
++
+     return file->_flag & _IOERR;
+ }
+ 
+@@ -3869,6 +3883,8 @@ int CDECL fgetc(FILE* file)
+ {
+     int ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return EOF;
++
+     _lock_file(file);
+     ret = _fgetc_nolock(file);
+     _unlock_file(file);
+@@ -3910,6 +3926,8 @@ char * CDECL fgets(char *s, int size, FILE* file)
+   int    cc = EOF;
+   char * buf_start = s;
+ 
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return NULL;
++
+   TRACE(":file(%p) fd (%d) str (%p) len (%d)\n",
+ 	file,file->_file,s,size);
+ 
+@@ -3941,6 +3959,8 @@ wint_t CDECL fgetwc(FILE* file)
+ {
+     wint_t ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return WEOF;
++
+     _lock_file(file);
+     ret = _fgetwc_nolock(file);
+     _unlock_file(file);
+@@ -4003,6 +4023,8 @@ int CDECL _getw(FILE* file)
+   unsigned int j;
+   ch = (char *)&i;
+ 
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return EOF;
++
+   _lock_file(file);
+   for (j=0; j<sizeof(int); j++) {
+     k = _fgetc_nolock(file);
+@@ -4050,6 +4072,8 @@ wchar_t * CDECL fgetws(wchar_t *s, int size, FILE* file)
+   wint_t cc = WEOF;
+   wchar_t * buf_start = s;
+ 
++  if (!MSVCRT_CHECK_PMT(file != NULL)) return NULL;
++
+   TRACE(":file(%p) fd (%d) str (%p) len (%d)\n",
+         file,file->_file,s,size);
+ 
+@@ -4137,6 +4161,8 @@ size_t CDECL fwrite(const void *ptr, size_t size, size_t nmemb, FILE* file)
+ {
+     size_t ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return 0;
++
+     _lock_file(file);
+     ret = _fwrite_nolock(ptr, size, nmemb, file);
+     _unlock_file(file);
+@@ -4203,6 +4229,8 @@ wint_t CDECL fputwc(wint_t wc, FILE* file)
+ {
+     wint_t ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return WEOF;
++
+     _lock_file(file);
+     ret = _fputwc_nolock(wc, file);
+     _unlock_file(file);
+@@ -4360,6 +4388,8 @@ int CDECL fputc(int c, FILE* file)
+ {
+     int ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return EOF;
++
+     _lock_file(file);
+     ret = _fputc_nolock(c, file);
+     _unlock_file(file);
+@@ -4406,6 +4436,8 @@ size_t CDECL fread(void *ptr, size_t size, size_t nmemb, FILE* file)
+ {
+     size_t ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return 0;
++
+     _lock_file(file);
+     ret = _fread_nolock(ptr, size, nmemb, file);
+     _unlock_file(file);
+@@ -4672,6 +4704,8 @@ __int64 CDECL _ftelli64(FILE* file)
+ {
+     __int64 ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return -1;
++
+     _lock_file(file);
+     ret = _ftelli64_nolock(file);
+     _unlock_file(file);
+@@ -4770,6 +4804,8 @@ int CDECL fputs(const char *s, FILE* file)
+     size_t len = strlen(s);
+     int ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return EOF;
++
+     _lock_file(file);
+     ret = _fwrite_nolock(s, sizeof(*s), len, file) == len ? 0 : EOF;
+     _unlock_file(file);
+@@ -4785,6 +4821,8 @@ int CDECL fputws(const wchar_t *s, FILE* file)
+     BOOL tmp_buf;
+     int ret;
+ 
++    if (!MSVCRT_CHECK_PMT(file != NULL)) return (_MSVCR_VER >= 140 ? EOF : WEOF);
++
+     _lock_file(file);
+     if (!(get_ioinfo_nolock(file->_file)->wxflag & WX_TEXT)) {
+         ret = _fwrite_nolock(s,sizeof(*s),len,file) == len ? 0 : EOF;
+diff --git a/dlls/msvcrt/tests/file.c b/dlls/msvcrt/tests/file.c
+index 1cd3a5b..424f2c3 100644
+--- a/dlls/msvcrt/tests/file.c
++++ b/dlls/msvcrt/tests/file.c
+@@ -3148,6 +3148,109 @@ static void test_std_stream_open(void)
+     close(fd);
+ }
+ 
++static void test_null_stream(void)
++{
++    wchar_t wbuf[16];
++    char buf[16];
++    size_t size;
++    void *ptr;
++    int ret;
++
++    /* msvcrt.dll validates the stream and fails with EINVAL, measured on Windows 11 */
++    errno = 0xdeadbeef;
++    size = fread(buf, 1, sizeof(buf), NULL);
++    ok(size == 0, "fread returned %Iu\n", size);
++    ok(errno == EINVAL, "fread: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    size = fwrite(buf, 1, sizeof(buf), NULL);
++    ok(size == 0, "fwrite returned %Iu\n", size);
++    ok(errno == EINVAL, "fwrite: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ptr = fgets(buf, sizeof(buf), NULL);
++    ok(!ptr, "fgets returned %p\n", ptr);
++    ok(errno == EINVAL, "fgets: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ptr = fgetws(wbuf, ARRAY_SIZE(wbuf), NULL);
++    ok(!ptr, "fgetws returned %p\n", ptr);
++    ok(errno == EINVAL, "fgetws: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fputs("x", NULL);
++    ok(ret == EOF, "fputs returned %d\n", ret);
++    ok(errno == EINVAL, "fputs: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fputws(L"x", NULL);
++    ok(ret == WEOF, "fputws returned %d\n", ret);
++    ok(errno == EINVAL, "fputws: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fgetc(NULL);
++    ok(ret == EOF, "fgetc returned %d\n", ret);
++    ok(errno == EINVAL, "fgetc: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fgetwc(NULL);
++    ok(ret == WEOF, "fgetwc returned %d\n", ret);
++    ok(errno == EINVAL, "fgetwc: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = _getw(NULL);
++    ok(ret == EOF, "_getw returned %d\n", ret);
++    ok(errno == EINVAL, "_getw: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fputc('x', NULL);
++    ok(ret == EOF, "fputc returned %d\n", ret);
++    ok(errno == EINVAL, "fputc: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fputwc(L'x', NULL);
++    ok(ret == WEOF, "fputwc returned %d\n", ret);
++    ok(errno == EINVAL, "fputwc: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = _putw(1, NULL);
++    ok(ret == EOF, "_putw returned %d\n", ret);
++    ok(errno == EINVAL, "_putw: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = ftell(NULL);
++    ok(ret == -1, "ftell returned %d\n", ret);
++    ok(errno == EINVAL, "ftell: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = fseek(NULL, 0, SEEK_SET);
++    ok(ret == -1, "fseek returned %d\n", ret);
++    ok(errno == EINVAL, "fseek: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = feof(NULL);
++    ok(ret == 0, "feof returned %d\n", ret);
++    ok(errno == EINVAL, "feof: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = ferror(NULL);
++    ok(ret == 0, "ferror returned %d\n", ret);
++    ok(errno == EINVAL, "ferror: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    ret = _fileno(NULL);
++    ok(ret == -1, "_fileno returned %d\n", ret);
++    ok(errno == EINVAL, "_fileno: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    rewind(NULL);
++    ok(errno == EINVAL, "rewind: errno = %d\n", errno);
++
++    errno = 0xdeadbeef;
++    clearerr(NULL);
++    ok(errno == EINVAL, "clearerr: errno = %d\n", errno);
++}
++
+ START_TEST(file)
+ {
+     int arg_c;
+@@ -3231,4 +3334,5 @@ START_TEST(file)
+      * file contains lines in the correct order
+      */
+     WaitForMultipleObjects(ARRAY_SIZE(proc_handles), proc_handles, TRUE, 5000);
++    test_null_stream();
+ }

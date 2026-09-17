@@ -1,0 +1,109 @@
+wine-11.13 (ableton-linux runtime 2026.08.30.1), exit codes truncated to 8 bits by the shell: 0x05 = 0xC0000005, 0x17 = 0xC0000417
+msvcrt.dll fread -> CRASHED | exit=0x05
+msvcrt.dll fwrite -> CRASHED | exit=0x05
+msvcrt.dll fgets -> CRASHED | exit=0x05
+msvcrt.dll fgetws -> CRASHED | exit=0x05
+msvcrt.dll fputs -> CRASHED | exit=0x05
+msvcrt.dll fputws -> CRASHED | exit=0x05
+msvcrt.dll fgetc -> CRASHED | exit=0x05
+msvcrt.dll getc -> CRASHED | exit=0x05
+msvcrt.dll fgetwc -> CRASHED | exit=0x05
+msvcrt.dll _getw -> CRASHED | exit=0x05
+msvcrt.dll ftell -> CRASHED | exit=0x05
+msvcrt.dll _ftelli64 -> CRASHED | exit=0x05
+msvcrt.dll feof -> CRASHED | exit=0x05
+msvcrt.dll ferror -> CRASHED | exit=0x05
+msvcrt.dll _fileno -> CRASHED | exit=0x05
+msvcrt.dll fclose -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00
+msvcrt.dll rewind -> CRASHED | exit=0x05
+msvcrt.dll clearerr -> CRASHED | exit=0x05
+msvcrt.dll fputc -> CRASHED | exit=0x05
+msvcrt.dll putc -> CRASHED | exit=0x05
+msvcrt.dll fputwc -> CRASHED | exit=0x05
+msvcrt.dll _putw -> CRASHED | exit=0x05
+msvcrt.dll ungetc -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+msvcrt.dll ungetwc -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+msvcrt.dll fseek -> CRASHED | exit=0x05
+msvcrt.dll _fseeki64 -> CRASHED | exit=0x05
+msvcrt.dll setvbuf -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+ucrtbase.dll fread -> CRASHED | exit=0x05
+ucrtbase.dll fwrite -> CRASHED | exit=0x05
+ucrtbase.dll fgets -> CRASHED | exit=0x05
+ucrtbase.dll fgetws -> CRASHED | exit=0x05
+ucrtbase.dll fputs -> CRASHED | exit=0x05
+ucrtbase.dll fputws -> CRASHED | exit=0x05
+ucrtbase.dll fgetc -> CRASHED | exit=0x05
+ucrtbase.dll getc -> CRASHED | exit=0x05
+ucrtbase.dll fgetwc -> CRASHED | exit=0x05
+ucrtbase.dll _getw -> CRASHED | exit=0x05
+ucrtbase.dll ftell -> CRASHED | exit=0x05
+ucrtbase.dll _ftelli64 -> CRASHED | exit=0x05
+ucrtbase.dll feof -> CRASHED | exit=0x05
+ucrtbase.dll ferror -> CRASHED | exit=0x05
+ucrtbase.dll _fileno -> CRASHED | exit=0x05
+ucrtbase.dll fclose -> CRASHED | exit=0x17
+ucrtbase.dll rewind -> CRASHED | exit=0x05
+ucrtbase.dll clearerr -> CRASHED | exit=0x05
+ucrtbase.dll fputc -> CRASHED | exit=0x05
+ucrtbase.dll putc -> CRASHED | exit=0x05
+ucrtbase.dll fputwc -> CRASHED | exit=0x05
+ucrtbase.dll _putw -> CRASHED | exit=0x05
+ucrtbase.dll ungetc -> CRASHED | exit=0x17
+ucrtbase.dll ungetwc -> CRASHED | exit=0x17
+ucrtbase.dll fseek -> CRASHED | exit=0x05
+ucrtbase.dll _fseeki64 -> CRASHED | exit=0x05
+ucrtbase.dll setvbuf -> CRASHED | exit=0x17
+msvcrt.dll fread [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fwrite [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fgets [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fgetws [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fputs [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fputws [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fgetc [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll getc [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fgetwc [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll _getw [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll ftell [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll _ftelli64 [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll feof [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll ferror [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll _fileno [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fclose [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00
+msvcrt.dll rewind [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll clearerr [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fputc [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll putc [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll fputwc [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll _putw [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll ungetc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+msvcrt.dll ungetwc [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+msvcrt.dll fseek [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll _fseeki64 [handler] (no _set_invalid_parameter_handler) -> CRASHED | exit=0x05
+msvcrt.dll setvbuf [handler] (no _set_invalid_parameter_handler) -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+ucrtbase.dll fread [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fwrite [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fgets [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fgetws [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fputs [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fputws [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fgetc [handler] -> CRASHED | exit=0x05
+ucrtbase.dll getc [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fgetwc [handler] -> CRASHED | exit=0x05
+ucrtbase.dll _getw [handler] -> CRASHED | exit=0x05
+ucrtbase.dll ftell [handler] -> CRASHED | exit=0x05
+ucrtbase.dll _ftelli64 [handler] -> CRASHED | exit=0x05
+ucrtbase.dll feof [handler] -> CRASHED | exit=0x05
+ucrtbase.dll ferror [handler] -> CRASHED | exit=0x05
+ucrtbase.dll _fileno [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fclose [handler] -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00
+ucrtbase.dll rewind [handler] -> CRASHED | exit=0x05
+ucrtbase.dll clearerr [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fputc [handler] -> CRASHED | exit=0x05
+ucrtbase.dll putc [handler] -> CRASHED | exit=0x05
+ucrtbase.dll fputwc [handler] -> CRASHED | exit=0x05
+ucrtbase.dll _putw [handler] -> CRASHED | exit=0x05
+ucrtbase.dll ungetc [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00
+ucrtbase.dll ungetwc [handler] -> returned, ret=0x4000ffff (int 1073807359) errno=22 | exit=0x00
+ucrtbase.dll fseek [handler] -> CRASHED | exit=0x05
+ucrtbase.dll _fseeki64 [handler] -> CRASHED | exit=0x05
+ucrtbase.dll setvbuf [handler] -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00

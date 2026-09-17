@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+"""Patch libRack.dll (VCV Rack 2 for Windows) so Rack no longer crashes under Wine.
+
+rack::system::archiveDirectory() calls fopen() on every archive entry, including
+directories. For a directory fopen() returns NULL, and Rack passes that NULL on to
+fread(). Microsoft's msvcrt.dll returns 0 for a NULL stream. Wine's msvcrt locks the
+stream first and faults in RtlEnterCriticalSection(NULL + 0x30), which takes the
+plugin host down with it.
+
+This script rewrites the 58 byte read loop so that it is skipped when f == NULL.
+It looks the code up by byte pattern, recomputes the call displacements, and
+refuses to touch the file unless the pattern matches exactly once.
+
+Usage:
+    vcv-rack-wine-fix [--check] [--revert] [--prefix DIR] [libRack.dll ...]
+
+Without a path it searches $WINEPREFIX, ~/.wine and ~/.wine-ableton for
+Rack2Pro and Rack2Free installations.
+"""
+import hashlib
+import os
+import re
+import shutil
+import sys
+
+RACK_DIRS = ("Rack2Pro", "Rack2Free")
+
+# Original: rsi = f; loop fread -> archive_write_data; fclose. rel32 fields are wildcards.
+ORIG = re.compile(
+    rb"\x48\x89\xc6\xeb\x0f\x0f\x1f\x00"
+    rb"\x48\x8b\x4d\x08\x48\x89\xda\xe8(?P<w>.{4})"
+    rb"\x49\x89\xf1\x41\xb8\x00\x00\x01\x00\xba\x01\x00\x00\x00\x48\x89\xd9\xe8(?P<r>.{4})"
+    rb"\x49\x89\xc0\x48\x85\xc0\x7f\xd6"
+    rb"\x48\x89\xf1\xe8(?P<c>.{4})",
+    re.S,
+)
+PATCHED = re.compile(
+    rb"\x48\x96\x48\x85\xf6\x74\x33"
+    rb"\x49\x89\xf1\x41\xb8\x00\x00\x01\x00\x31\xd2\xff\xc2\x48\x89\xd9\xe8.{4}"
+    rb"\x49\x89\xc0\x48\x85\xc0\x7e\x0e"
+    rb"\x48\x8b\x4d\x08\x48\x89\xda\xe8.{4}"
+    rb"\xeb\xd5"
+    rb"\x48\x89\xf1\xe8.{4}",
+    re.S,
+)
+
+
+def rel(b, delta):
+    v = (int.from_bytes(b, "little", signed=True) + delta) & 0xFFFFFFFF
+    return v.to_bytes(4, "little")
+
+
+def build(m):
+    return (
+        b"\x48\x96"                      # xchg %rax,%rsi      rsi = f
+        b"\x48\x85\xf6"                  # test %rsi,%rsi
+        b"\x74\x33"                      # jz   past fclose    (f == NULL: read nothing)
+        b"\x49\x89\xf1"                  # mov  %rsi,%r9
+        b"\x41\xb8\x00\x00\x01\x00"      # mov  $0x10000,%r8d
+        b"\x31\xd2\xff\xc2"              # xor %edx,%edx; inc %edx
+        b"\x48\x89\xd9"                  # mov  %rbx,%rcx
+        b"\xe8" + rel(m["r"], 0x0E) +    # call fread
+        b"\x49\x89\xc0"                  # mov  %rax,%r8
+        b"\x48\x85\xc0"                  # test %rax,%rax
+        b"\x7e\x0e"                      # jle  fclose
+        b"\x48\x8b\x4d\x08"              # mov  0x8(%rbp),%rcx
+        b"\x48\x89\xda"                  # mov  %rbx,%rdx
+        b"\xe8" + rel(m["w"], -0x1C) +   # call archive_write_data
+        b"\xeb\xd5"                      # jmp  back to fread
+        b"\x48\x89\xf1"                  # mov  %rsi,%rcx
+        b"\xe8" + m["c"]                 # call fclose
+    )
+
+
+def find_installs(prefix):
+    prefixes = [prefix] if prefix else [
+        p for p in (os.environ.get("WINEPREFIX"), "~/.wine", "~/.wine-ableton") if p
+    ]
+    found = []
+    for p in prefixes:
+        for d in RACK_DIRS:
+            f = os.path.join(os.path.expanduser(p), "drive_c/Program Files/VCV", d, "libRack.dll")
+            if os.path.isfile(f) and f not in found:
+                found.append(f)
+    return found
+
+
+def handle(path, check, revert):
+    bak = path + ".orig"
+    if revert:
+        if not os.path.exists(bak):
+            print(f"{path}: no backup {bak}")
+            return 1
+        shutil.copy2(bak, path)
+        print(f"{path}: original restored")
+        return 0
+    data = open(path, "rb").read()
+    sha = hashlib.sha256(data).hexdigest()[:16]
+    orig = list(ORIG.finditer(data))
+    done = list(PATCHED.finditer(data))
+    if len(done) == 1 and not orig:
+        print(f"{path}: already patched ({sha})")
+        return 0
+    if len(orig) != 1:
+        print(f"{path}: pattern found {len(orig)} times, expected 1. Different Rack build, "
+              f"or fixed upstream? Nothing changed ({sha}).")
+        return 2
+    m = orig[0]
+    new = build(m)
+    assert len(new) == len(m.group(0)) == 58
+    if check:
+        print(f"{path}: NOT patched, pattern at file offset {m.start():#x} ({sha})")
+        return 1
+    if not os.path.exists(bak):
+        shutil.copy2(path, bak)
+    tmp = path + ".tmp"
+    with open(tmp, "wb") as f:
+        f.write(data[: m.start()] + new + data[m.end():])
+    shutil.copystat(path, tmp)
+    os.replace(tmp, path)
+    print(f"{path}: patched at file offset {m.start():#x}, backup in {os.path.basename(bak)}")
+    return 0
+
+
+def main():
+    argv = sys.argv[1:]
+    if "-h" in argv or "--help" in argv:
+        print(__doc__)
+        return 0
+    prefix = None
+    if "--prefix" in argv:
+        i = argv.index("--prefix")
+        prefix = argv[i + 1]
+        del argv[i:i + 2]
+    check, revert = "--check" in argv, "--revert" in argv
+    paths = [a for a in argv if not a.startswith("--")] or find_installs(prefix)
+    if not paths:
+        print("No libRack.dll found. Pass the path, or use --prefix / WINEPREFIX.")
+        return 2
+    return max(handle(p, check, revert) for p in paths)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

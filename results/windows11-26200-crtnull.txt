@@ -1,0 +1,55 @@
+Microsoft Windows [Version 10.0.26200.6584]
+msvcrt.dll fread -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fwrite -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fgets -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fgetws -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll fputs -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fputws -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll fgetc -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll getc -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fgetwc -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll _getw -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll ftell -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll _ftelli64 -> export missing | exit=0x0000005B
+msvcrt.dll feof -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll ferror -> returned, ret=0x0 (int 0) errno=22 | exit=0x00000000
+msvcrt.dll _fileno -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fclose -> returned, ret=0xffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll rewind -> returned, ret=0x8bca27c000 (int -903364608) errno=22 | exit=0x00000000
+msvcrt.dll clearerr -> returned, ret=0x16 (int 22) errno=22 | exit=0x00000000
+msvcrt.dll fputc -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll putc -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll fputwc -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll _putw -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll ungetc -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll ungetwc -> returned, ret=0xffff (int 65535) errno=22 | exit=0x00000000
+msvcrt.dll fseek -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+msvcrt.dll _fseeki64 -> CRASHED | exit=0xC0000005
+msvcrt.dll setvbuf -> returned, ret=0xffffffffffffffff (int -1) errno=22 | exit=0x00000000
+ucrtbase.dll fread -> CRASHED | exit=0xC0000409
+ucrtbase.dll fwrite -> CRASHED | exit=0xC0000409
+ucrtbase.dll fgets -> CRASHED | exit=0xC0000409
+ucrtbase.dll fgetws -> CRASHED | exit=0xC0000409
+ucrtbase.dll fputs -> CRASHED | exit=0xC0000409
+ucrtbase.dll fputws -> CRASHED | exit=0xC0000409
+ucrtbase.dll fgetc -> CRASHED | exit=0xC0000409
+ucrtbase.dll getc -> CRASHED | exit=0xC0000409
+ucrtbase.dll fgetwc -> CRASHED | exit=0xC0000409
+ucrtbase.dll _getw -> CRASHED | exit=0xC0000409
+ucrtbase.dll ftell -> CRASHED | exit=0xC0000409
+ucrtbase.dll _ftelli64 -> CRASHED | exit=0xC0000409
+ucrtbase.dll feof -> CRASHED | exit=0xC0000409
+ucrtbase.dll ferror -> CRASHED | exit=0xC0000409
+ucrtbase.dll _fileno -> CRASHED | exit=0xC0000409
+ucrtbase.dll fclose -> CRASHED | exit=0xC0000409
+ucrtbase.dll rewind -> CRASHED | exit=0xC0000409
+ucrtbase.dll clearerr -> CRASHED | exit=0xC0000409
+ucrtbase.dll fputc -> CRASHED | exit=0xC0000409
+ucrtbase.dll putc -> CRASHED | exit=0xC0000409
+ucrtbase.dll fputwc -> CRASHED | exit=0xC0000409
+ucrtbase.dll _putw -> CRASHED | exit=0xC0000409
+ucrtbase.dll ungetc -> CRASHED | exit=0xC0000409
+ucrtbase.dll ungetwc -> CRASHED | exit=0xC0000409
+ucrtbase.dll fseek -> CRASHED | exit=0xC0000409
+ucrtbase.dll _fseeki64 -> CRASHED | exit=0xC0000409
+ucrtbase.dll setvbuf -> CRASHED | exit=0xC0000409

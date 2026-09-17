@@ -1,0 +1,9 @@
+Microsoft Windows [Version 10.0.26200.6584]
+2984:file: 3 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+2a3c:file: 1 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+22ac:file: 3 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+0fa8:file: 26 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+022c:file: 5 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+24e4:file: 5 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+2060:file: 1151 tests executed (0 marked as todo, 0 as flaky, 0 failures), 0 skipped.
+exit=0 
