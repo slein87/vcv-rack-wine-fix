@@ -137,6 +137,7 @@ The pair `rcx=0x30`, read from `0x50` is the signature. Live's own log only says
 | Run | Result |
 |---|---|
 | `msvcrt!fread(buf, 1, 16, NULL)` from a freestanding EXE, Wine 11.13 | page fault at the same `ntdll` address as the crash in Live |
+| the same with unmodified Wine 11.17 (distribution package, fresh prefix) | same crash, also for `fwrite`, `fgets`, `fgetc`, `fputs`, `ftell`, `feof`. `fclose` returns `EOF` |
 | `archiveDirectory()` from unmodified `libRack.dll` (Free and Pro 2.6.6), Wine 11.13 | same page fault |
 | `archiveDirectory()` from patched `libRack.dll`, Wine 11.13 | returns, archive is identical to the source directory (including a file larger than one 64 KB read) |
 | Rack Pro 2.6.6 VST3 with patched `libRack.dll` inside Ableton Live 12.4.6 (ableton-linux, Wine 11.13) | plugin loads, audio works, Live set and `.vcv` patch save, and both come back after restarting Live. The saved `.vcv` contains the full `patch.json`. Before the patch: five crashes in five attempts |
@@ -180,7 +181,7 @@ with `msvcrt` and `ucrtbase`, so the patch applies to them as well.
 
 | Where | Status |
 |---|---|
-| Wine (bug report with the measurements, no patch because of Wine's LLM policy) | not filed yet |
+| Wine (bug report with the measurements, no patch because of Wine's LLM policy) | [Wine bug 60344](https://bugs.winehq.org/show_bug.cgi?id=60344) |
 | VCV Rack (VCV does not accept code contributions) | reported to VCV support on 2026-09-17 |
 | Cardinal | [comment in #854](https://github.com/DISTRHO/Cardinal/issues/854#issuecomment-5720689742) |
 | ableton-linux (its Wine build could carry the fix) | [shibco/ableton-linux#317](https://github.com/shibco/ableton-linux/issues/317) |
